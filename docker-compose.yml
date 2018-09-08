@@ -1,0 +1,11 @@
+version: "3"
+
+services:
+  rails-test-app:
+    build: rails-test
+    volumes:
+    - ./rails-test:/app
+    ports:
+    - '8000:8000'
+    env_file:
+    - ./config/.rails-test.env
