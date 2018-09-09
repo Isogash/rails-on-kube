@@ -3,6 +3,7 @@ version: "3"
 services:
   rails-test-app:
     build: ./rails-test
+    image: rails-on-minikube_rails-test-app:v1
     volumes:
     - ./rails-test:/app
     ports:

@@ -24,7 +24,8 @@ spec:
           value: 0.0.0.0:8000
         - name: WORKER_PROCESSES
           value: "1"
-        image: play_rails-test-app:v1
+        image: rails-on-minikube_rails-test-app:v1
+        imagePullPolicy: Never
         name: rails-test-app
         ports:
         - containerPort: 8000
