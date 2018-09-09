@@ -17,7 +17,7 @@ To build and test the Rails app normally, use:
     docker-compose build
     docker-compose up
 
-The app should be available on [`http://localhost:8000`](http://localhost:8000)
+The app should be available on http://localhost:8000
 
 The service mounts your local directory so that changes to the code can be immediately tested.
 
