@@ -2,7 +2,7 @@ version: "3"
 
 services:
   rails-test-app:
-    build: rails-test
+    build: ./rails-test
     volumes:
     - ./rails-test:/app
     ports:

@@ -1,13 +1,9 @@
-FROM play_rails-test-app as old-app
-
-# Use the barebones version of Ruby 2.2.3.
-FROM ruby:2.2.3-slim
-
+FROM ruby:2.2.3-slim as base
 # Install dependencies:
 # - build-essential: To ensure certain gems can be compiled
 # - nodejs: Compile assets
 RUN apt-get update && apt-get install -qq -y --fix-missing --no-install-recommends \
-  build-essential \
+  build-essential\
   nodejs \
   libsqlite3-dev
 
@@ -25,8 +21,6 @@ WORKDIR $INSTALL_PATH
 ENV BUNDLE_PATH /gems
 RUN mkdir -p $BUNDLE_PATH
 
-COPY --from=old-app /gems /gems
-
 RUN gem install bundler -v 1.12.5
 # Copy both Gemfile and Gemfile.lock
 COPY Gemfile Gemfile.lock ./
@@ -43,4 +37,4 @@ RUN bundle exec rake RAILS_ENV=production assets:precompile
 VOLUME ["$INSTALL_PATH/public"]
 
 # The default command that gets ran will be to start the Unicorn server.
-ENTRYPOINT bundle exec unicorn -c config/unicorn.rb
+CMD bundle exec unicorn -c config/unicorn.rb
